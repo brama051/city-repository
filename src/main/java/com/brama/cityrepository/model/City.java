@@ -1,18 +1,41 @@
 package com.brama.cityrepository.model;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 
-@Entity
-public class City {
-	
-	@Id
-	String name;
-	
-	String description;
-	
-	Long population;
+import com.brama.cityrepository.model.listener.CityListener;
 
+@Entity
+@EntityListeners(CityListener.class)
+public class City implements Serializable {
+	
+	private static final long serialVersionUID = -1239425252515560834L;
+
+	@Id
+	private String name;
+	
+	private String description;
+	
+	private Long population;
+	
+	private LocalDateTime created;
+	
+	private Long favorited;
+
+	public City() {
+	}
+	
+	public City(String name, String description, Long population) {
+		this();
+		this.setName(name);
+		this.setDescription(description);
+		this.setPopulation(population);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -35,5 +58,21 @@ public class City {
 
 	public void setPopulation(Long population) {
 		this.population = population;
+	}
+
+	public LocalDateTime getTimestamp() {
+		return created;
+	}
+
+	public void setTimestamp(LocalDateTime created) {
+		this.created = created;
+	}
+
+	public Long getFavorited() {
+		return favorited;
+	}
+
+	public void setFavorited(Long favorited) {
+		this.favorited = favorited;
 	}
 }

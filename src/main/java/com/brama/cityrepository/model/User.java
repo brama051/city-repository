@@ -1,7 +1,10 @@
 package com.brama.cityrepository.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -10,6 +13,11 @@ public class User {
 	
 	String password;
 
+	@ManyToMany
+	Set<City> favoriteCities;
+	
+	public User() {}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -24,5 +32,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<City> getFavoriteCities() {
+		return favoriteCities;
+	}
+
+	public void setFavoriteCities(Set<City> favoriteCities) {
+		this.favoriteCities = favoriteCities;
 	}
 }
