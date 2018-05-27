@@ -6,6 +6,11 @@ Body parameters:
 - `email` - mandatory
 - `password` - mandatory
  
+ Success response
+
+> Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidGVzdGp3dHJlc291cmNlaWQiXSwidXNlcl9uYW1lIjoidmVkcmFuIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTUyNzQ5MTI0OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiJdLCJqdGkiOiI5NzU0MTgxNC0yMmE0LTRlNTMtOWUxMi1lYmY5MmI2MmQzYTciLCJjbGllbnRfaWQiOiJ0ZXN0and0Y2xpZW50aWQifQ.wEdeoY1gvAKvR-IsJLLA8RNMCDan5Rdc2bfpYqfwc_s
+ 
+ 
 ###HTTP POST: `/register` 
 Body parameters:
 - `email` - mandatory
@@ -18,10 +23,6 @@ Success response
 ###HTTP GET: `/cities[&orderBy]`
 URL parameters
 - `orderBy` - optional - text - [none/`favorites`/`created`] 
-
-Success response
-
-> Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidGVzdGp3dHJlc291cmNlaWQiXSwidXNlcl9uYW1lIjoidmVkcmFuIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTUyNzQ5MTI0OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiJdLCJqdGkiOiI5NzU0MTgxNC0yMmE0LTRlNTMtOWUxMi1lYmY5MmI2MmQzYTciLCJjbGllbnRfaWQiOiJ0ZXN0and0Y2xpZW50aWQifQ.wEdeoY1gvAKvR-IsJLLA8RNMCDan5Rdc2bfpYqfwc_s
 
 ###HTTP GET: `/cities/{cityName}`
 URL parameters
