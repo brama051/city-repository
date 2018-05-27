@@ -37,7 +37,7 @@ public class CityRepositoryApplication {
 	public CommandLineRunner loadUserData(UserRepository userRepository) {
 		return (args) -> {
 			User user = new User();
-			user.setEmail("vedran.abramovic@gmail.com");
+			user.setEmail("test");
 			// BCrypted(4): password
 			user.setPassword("$2a$04$I4jsL.ssuN5l2sSxdNJ9/.g1.w6WVTAuFPovHG050MrXp2A92kx/W");
 			userRepository.save(user);

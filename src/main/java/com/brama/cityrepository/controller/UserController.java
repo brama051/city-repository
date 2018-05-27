@@ -15,6 +15,7 @@ import com.brama.cityrepository.service.UserService;
 
 @RestController
 public class UserController {
+	
 	@Autowired
 	UserService userService;
 	
