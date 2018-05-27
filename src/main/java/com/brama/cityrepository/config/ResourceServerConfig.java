@@ -3,6 +3,7 @@ package com.brama.cityrepository.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -29,7 +30,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .requestMatchers()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/register", "/login", "/cities").permitAll()
+                .antMatchers("/register", "/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/cities").permitAll()
+                .antMatchers(HttpMethod.POST, "/cities").authenticated()
                 .antMatchers("/cities/*/favorite", "/cities/*/unfavorite" ).authenticated();
     }
 }
