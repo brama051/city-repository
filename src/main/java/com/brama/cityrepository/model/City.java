@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 
+import org.assertj.core.util.Strings;
+
 import com.brama.cityrepository.model.listener.CityListener;
 
 @Entity
@@ -75,4 +77,17 @@ public class City implements Serializable {
 	public void setFavorited(Long favorited) {
 		this.favorited = favorited;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof City) {
+			City cObj = (City) obj;
+			if (cObj != null && !Strings.isNullOrEmpty(cObj.getName()) && cObj.getName().equals(this.name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 }

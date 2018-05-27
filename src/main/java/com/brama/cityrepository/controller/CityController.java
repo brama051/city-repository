@@ -3,6 +3,7 @@ package com.brama.cityrepository.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,13 +31,13 @@ public class CityController {
 	}
 	
 	@GetMapping("{cityName}/favorite")
-	public void favoriteCity(@PathVariable String cityName) {
-		cityService.favorite(cityName);
+	public void favoriteCity(@PathVariable String cityName, Authentication authentication) {
+		cityService.favorite(cityName, authentication.getName());
 	}
 	
 	@GetMapping("{cityName}/unfavorite")
-	public void unfavoriteCity(@PathVariable String cityName) {
-		cityService.unfavorite(cityName);
+	public void unfavoriteCity(@PathVariable String cityName, Authentication authentication) {
+		cityService.unfavorite(cityName, authentication.getName());
 	}
 	
 	@GetMapping

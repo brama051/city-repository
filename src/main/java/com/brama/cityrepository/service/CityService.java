@@ -14,8 +14,8 @@ public interface CityService {
 
 	public List<City> getAll();
 
-	public void favorite(String cityName);
+	public void favorite(String cityName, String username);
 
-	public void unfavorite(String cityName);
+	public void unfavorite(String cityName, String username);
 
 }

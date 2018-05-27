@@ -45,16 +45,22 @@ public class CityServiceImpl implements CityService {
 	}
 
 	@Override
-	public void favorite(String cityName) {
+	public void favorite(String cityName, String username) {
 		if (cityRepository.existsById(cityName)) {
-			userService.favoriteCity(cityName);
+			userService.favoriteCity(cityName, username);
+			City city = cityRepository.findById(cityName).get();
+			city.setPopulation(city.getPopulation() + 1);
+			cityRepository.save(city);
 		}
 	}
 
 	@Override
-	public void unfavorite(String cityName) {
+	public void unfavorite(String cityName, String username) {
 		if (cityRepository.existsById(cityName)) {
-			userService.unfavoriteCity(cityName);
+			userService.unfavoriteCity(cityName, username);
+			City city = cityRepository.findById(cityName).get();
+			city.setPopulation(city.getPopulation() - 1);
+			cityRepository.save(city);
 		}
 	}
 

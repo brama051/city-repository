@@ -21,6 +21,12 @@ public class User {
 		favoriteCities = new HashSet<>();
 	}
 	
+	public User(String email, String hashedPassword) {
+		this();
+		this.email = email;
+		this.password = hashedPassword;
+	}
+	
 	public String getEmail() {
 		return email;
 	}

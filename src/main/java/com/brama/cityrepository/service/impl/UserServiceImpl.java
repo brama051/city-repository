@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.brama.cityrepository.model.User;
+import com.brama.cityrepository.repository.CityRepository;
 import com.brama.cityrepository.repository.UserRepository;
 import com.brama.cityrepository.service.UserService;
 
@@ -17,6 +18,9 @@ import com.brama.cityrepository.service.UserService;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	CityRepository cityRepository;
 	
 	@Value("${security.encoding-strength}")
 	private Integer encodingStrength;
@@ -29,7 +33,8 @@ public class UserServiceImpl implements UserService {
 			User user = new User();
 			user.setEmail(email);
 			user.setPassword(bc.encode(password));
-			return user;
+			
+			return userRepository.save(user);
 		}
 		
 		return null;
@@ -52,15 +57,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void favoriteCity(String cityName) {
-		// TODO Auto-generated method stub
-		
+	public void favoriteCity(String cityName, String username) {
+		User user = userRepository.findById(username).get();
+		user.getFavoriteCities().add(cityRepository.findById(cityName).get());
 	}
 
 	@Override
-	public void unfavoriteCity(String cityName) {
-		// TODO Auto-generated method stub
-		
+	public void unfavoriteCity(String cityName, String username) {
+		User user = userRepository.findById(username).get();
+		user.getFavoriteCities().remove(cityRepository.findById(cityName).get());
 	}
 
 }

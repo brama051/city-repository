@@ -10,7 +10,7 @@ public interface UserService {
 	
 	boolean emailExists(String email);
 	
-	void favoriteCity(String cityName);
+	void favoriteCity(String cityName, String username);
 	
-	void unfavoriteCity(String cityName);
+	void unfavoriteCity(String cityName, String username);
 }
