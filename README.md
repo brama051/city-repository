@@ -24,11 +24,6 @@ Success response
 URL parameters
 - `orderBy` - optional - text - [none/`favorites`/`created`] 
 
-## HTTP GET: `/cities/{cityName}`
-URL parameters
-- `cityName` - mandatory - name
-
-
 # Secured endpoints
 To consume any of the secured endpoints, user must first login or register. By doing so, one will acquire a token which must be provided in `Authorization` header
 
