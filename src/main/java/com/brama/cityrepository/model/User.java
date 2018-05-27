@@ -1,5 +1,6 @@
 package com.brama.cityrepository.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -16,7 +17,9 @@ public class User {
 	@ManyToMany
 	Set<City> favoriteCities;
 	
-	public User() {}
+	public User() {
+		favoriteCities = new HashSet<>();
+	}
 	
 	public String getEmail() {
 		return email;

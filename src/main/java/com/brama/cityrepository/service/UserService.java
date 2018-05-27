@@ -6,6 +6,8 @@ public interface UserService {
 	
 	User registerNewUser(String email, String password);
 	
+	User login(String email, String password);
+	
 	boolean emailExists(String email);
 	
 	void favoriteCity(String cityName);

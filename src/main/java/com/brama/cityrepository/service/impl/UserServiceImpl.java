@@ -1,8 +1,12 @@
 package com.brama.cityrepository.service.impl;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.brama.cityrepository.model.User;
@@ -14,10 +18,30 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
 	
+	@Value("${security.encoding-strength}")
+	private Integer encodingStrength;
+	
 	@Transactional
 	public User registerNewUser(String email, String password) {
 		if (!emailExists(email)) {
+			BCryptPasswordEncoder bc = new BCryptPasswordEncoder(this.encodingStrength);
 			
+			User user = new User();
+			user.setEmail(email);
+			user.setPassword(bc.encode(password));
+			return user;
+		}
+		
+		return null;
+	}
+
+	@Override
+	public User login(String email, String password) {
+		BCryptPasswordEncoder bc = new BCryptPasswordEncoder(this.encodingStrength);
+		
+		Optional<User> optionalUser = userRepository.findById(email);
+		if (optionalUser.isPresent() && bc.matches(password, optionalUser.get().getPassword())) {
+			return optionalUser.get();
 		}
 		return null;
 	}
@@ -38,4 +62,5 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

@@ -23,11 +23,14 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-web:1.5.3.RELEASE")
 	compile('com.h2database:h2')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	//compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-security:1.5.3.RELEASE')
+	
+	compile('org.springframework.security:spring-security-jwt:1.0.7.RELEASE')
+	compile('org.springframework.security.oauth:spring-security-oauth2:2.1.0.RELEASE')
+	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

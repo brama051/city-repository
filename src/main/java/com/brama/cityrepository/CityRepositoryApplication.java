@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.brama.cityrepository.model.City;
+import com.brama.cityrepository.model.User;
 import com.brama.cityrepository.repository.CityRepository;
+import com.brama.cityrepository.repository.UserRepository;
 
 @SpringBootApplication
 public class CityRepositoryApplication {
@@ -16,7 +18,7 @@ public class CityRepositoryApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner loadData(CityRepository cityRepository) {
+	public CommandLineRunner loadCityData(CityRepository cityRepository) {
 		return (args) -> {
 			cityRepository.save(new City("Rijeka", "Grad koji tece", 150000L));
 			cityRepository.save(new City("Zagreb", "Glavni grad RH", 1000000L));
@@ -30,4 +32,16 @@ public class CityRepositoryApplication {
 			cityRepository.save(new City("Cres", "Janjetina i pol", 15000L));
 		};
 	}
+	
+	@Bean
+	public CommandLineRunner loadUserData(UserRepository userRepository) {
+		return (args) -> {
+			User user = new User();
+			user.setEmail("vedran.abramovic@gmail.com");
+			// BCrypted(4): password
+			user.setPassword("$2a$04$I4jsL.ssuN5l2sSxdNJ9/.g1.w6WVTAuFPovHG050MrXp2A92kx/W");
+			userRepository.save(user);
+		};
+	}
+	
 }
