@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import org.assertj.core.util.Strings;
 
 import com.brama.cityrepository.model.listener.CityListener;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @EntityListeners(CityListener.class)
@@ -24,8 +25,10 @@ public class City implements Serializable {
 	
 	private Long population;
 	
+	@JsonIgnore
 	private LocalDateTime created;
 	
+	@JsonIgnore
 	private Long favorited;
 
 	public City() {

@@ -41,7 +41,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		
 		HttpEntity<Map<String, String>> request = new HttpEntity<Map<String, String>>(null, headers);
 
-		Map<String, String> map= new HashMap<String, String>();
+		Map<String, String> map = new HashMap<String, String>();
 		map.put("username", username);
 		map.put("password", password);
 		map.put("grant_type", "password");
